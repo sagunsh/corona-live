@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Corona Virus - Live Update</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href=" {{ url_for('static', filename='style.css') }}">
+
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155000519-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-155000519-2');
+    </script>
+</head>
+<body>
+<h1 align="center" style="font-weight:bold; padding-top: 15px; color: #3a91ca">Corona Virus Live Update</h1>
+<div class="row" align="center">
+    <h2 style="font-weight: bold; size: 10px">Confirmed Cases: {{ total.Confirmed }} | Total Recovered: {{
+        total.Recovered }} | Total Deaths: {{ total.Deaths
+        }}</h2>
+</div>
+<div class="row" style="margin: 2em 10em">
+    <table id="example" class="display" style="width:100%">
+        <thead>
+        <tr>
+            <th>Country</th>
+            <th>Province</th>
+            <th>LastUpdate</th>
+            <th>Confirmed</th>
+            <th>Deaths</th>
+            <th>Recovered</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in items %}
+        <tr align="center">
+            <td>{{ item.Country }}</td>
+            <td>{{ item.Province }}</td>
+            <td>{{ item.LastUpdate }}</td>
+            <td>{{ item.Confirmed }}</td>
+            <td>{{ item.Deaths }}</td>
+            <td>{{ item.Recovered }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <br><br>
+    <center><span class="yclinks">
+                    <a href="https://twitter.com/visualize_now" target="_blank">Twitter</a>
+        | <a href="https://www.facebook.com/visualizenow1/" target="_blank">Facebook</a>
+        | <a href="https://www.youtube.com/channel/UC0g5isL73zmc18SERolz9xg" target="_blank">Youtube</a>
+        | <a href="https://docs.google.com/forms/d/1LZ8w5kcQMsS1o0SNEDUX2ooYQVnfVmaciLC2qeZIgj0/" target="_blank">Subscribe</a>
+    </span><br><br>
+        <a target="_blank"
+           href="https://docs.google.com/spreadsheets/d/1yZv9w9zRKwrGTaR-YzmAqMefw4wMlaXocejdxZaTs6w/htmlview?usp=sharing&sle=true">View
+            the source Source Google Sheet</a>
+        <br><br><a href="/corona-news" target="_blank" style="color: blue;">Get the latest news about corona virus
+            here</a>
+    </center>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
+<script type="text/javascript" charset="utf8"
+        src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#example').DataTable({
+            "order": [[5, 'desc']],
+            "pageLength": 100,
+            "paging": false,
+            // "ordering": false,
+            "info": true
+        });
+    });
+</script>
+</body>
+</html>

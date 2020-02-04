@@ -1,0 +1,104 @@
+<html op="news">
+<head>
+    <meta name="referrer" content="origin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href=" {{ url_for('static', filename='style.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <!--<link rel="alternate" type="application/rss+xml" title="RSS" href="rss">-->
+    <title>Corona virus - Live Update</title></head>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-155000519-2"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'UA-155000519-2');
+</script>
+<body>
+<center>
+    <table id="hnmain" border="0" cellpadding="0" cellspacing="0" width="85%" bgcolor="#F4F5F7">
+        <tr>
+            <td bgcolor="#3a91ca">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="padding:2px">
+                    <tr>
+                        <td style="width:18px;padding-right:4px"><a href="/corona-news"><img
+                                src="{{ url_for('static', filename='logo-alt.png') }}" width="18" height="18"
+                                style="border:1px white solid;"></a></td>
+                        <td style="line-height:12pt; height:10px;"><span class="pagetop"><b class="hnname">
+                            Corona Virus - Live Updates</b></span>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr id="pagespace" title="" style="height:10px"></tr>
+        <tr>
+            <td>
+                <table border="0" cellpadding="0" cellspacing="0" class="itemlist">
+                    {% for each in news %}
+                    <tr class='athing' id='{{ each.id }}'>
+                        <td align="right" valign="top" class="title"><span class="rank">{{ loop.index + (next_page-2)*30 }}.</span>
+                        </td>
+                        <td valign="top" class="votelinks">
+                            <center><a id='up_{{ each.id }}'>
+                                <div class='votearrow' title='upvote'></div>
+                            </a></center>
+                        </td>
+                        <td class="title"><a href="{{ each.link }}" target="_blank" class="storylink">{{ each.title }}
+                        </a><span class="sitebit comhead"> (<a href="/corona-news/from?site={{ each.source }}"
+                                                               target="_blank"><span
+                                class="sitestr">{{ each.source }}</span></a>)</span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"></td>
+                        <td class="subtext">
+                            Added by<a href="/" target="_blank" class="hnuser"> visualize_now</a> |
+                            <span class="age">Published on {{ each.published_date }}</span>
+                        </td>
+                    </tr>
+                    <tr class="spacer" style="height:5px"></tr>
+                    {% endfor %}
+
+                    <tr class="morespace" style="height:10px"></tr>
+                    <tr>
+                        <td colspan="2"></td>
+                        <td class="title"><a href="/corona-news?page={{ next_page }}" class="morelink"
+                                             rel="next">More</a></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td><img src="s.gif" height="10" width="0">
+                <table width="100%" cellspacing="0" cellpadding="1">
+                    <tr>
+                        <td bgcolor="#3a91ca"></td>
+                    </tr>
+                </table>
+                <br>
+                <center><span class="yclinks">
+                    <a href="https://twitter.com/visualize_now" target="_blank">Twitter</a>
+        | <a href="https://www.facebook.com/visualizenow1/" target="_blank">Facebook</a>
+        | <a href="https://www.youtube.com/channel/UC0g5isL73zmc18SERolz9xg" target="_blank">Youtube</a>
+        | <a href="https://docs.google.com/forms/d/1LZ8w5kcQMsS1o0SNEDUX2ooYQVnfVmaciLC2qeZIgj0/" target="_blank">Subscribe</a>
+                    <!--| <a href="mailto:visualizenow11@gmail.com">Contact</a>-->
+                </span><br><br>
+                    <a href="/corona-live" target="_blank" style="color: blue;">See stats about affected areas here</a>
+                    <!--<form method="get" action="">Search:-->
+                    <!--<input type="text" name="q" value="" size="17" autocorrect="off" spellcheck="false"-->
+                    <!--autocapitalize="off" autocomplete="false"></form>-->
+                    <!--<p>This site is not affiliated or linked with <a href="https://news.ycombinator.com/" target="_blank" style="color: blue">Hacker News [Y Combinator]</a>.</p>-->
+                    <br><br>
+                </center>
+            </td>
+        </tr>
+    </table>
+</center>
+</body>
+</html>
