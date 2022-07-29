@@ -3,4 +3,4 @@ PyMySQL==0.9.3
 pandas==0.25.3
 pytz==2019.3
 python-dateutil==2.8.1
-Scrapy==2.6.1
+Scrapy==2.6.2
